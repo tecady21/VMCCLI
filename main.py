@@ -19,6 +19,7 @@ def main():
 
     if cookie is False:
         commands.print_help()
+        return
 
     if args.option == "courses":
         list.list_courses(args, cookie)

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 
 COURSES_URL = "https://vmchecker.cs.pub.ro/services/services.py/getCourses"
@@ -76,8 +78,10 @@ def list_assignments(args, cookie):
 
     print(format_string.format("ID", "Title", "Deadline"))
     for assignment in assignments:
+        date = datetime.strptime(assignment["deadline"], "%Y.%m.%d %H:%M:%S").strftime("%d.%m.%Y %H:%M")
+
         print(format_string.format(assignment["assignmentId"], assignment["assignmentTitle"],
-                                   assignment["deadline"]))
+                                   date))
 
 
 def list_results(args, cookie):
