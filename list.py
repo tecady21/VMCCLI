@@ -59,6 +59,10 @@ def list_assignments(args, cookie):
     assignments_request = requests.get(assignments_url, headers=headers)
     assignments = assignments_request.json()
 
+    if type(assignments) is dict:
+        print("Wrong course id!")
+        return
+
     if len(assignments) == 0:
         print("No assignments yet!")
         return
